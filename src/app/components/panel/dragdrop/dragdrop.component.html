@@ -1,0 +1,66 @@
+
+<div class="example-container  col-xs-12 col-lg-5" >
+  <div
+    #todoList="cdkDropList"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[doneList]"
+    [cdkDropListData]="todo"
+    cdkDropList
+    class="example-list  col-xs-12 col-lg-12">
+
+    <div *ngFor="let item of todo" cdkDrag class="example-box"  >
+      <header  [style.background-color]="item.primaryColor" >
+        <img class="svg" (click)="openModal(item.id)"  src="https://img.icons8.com/cotton/64/000000/settings--v1.png"/>
+        <img  class="svg" (click)="pin(item.id)" src="https://img.icons8.com/nolan/64/pin3.png"/>
+      </header>
+      <div [ngSwitch]="item.id">
+        <div   *ngSwitchCase="'1'" class="col-sm-12">
+          <app-barchart class="row"></app-barchart>
+                  </div>
+        <div   *ngSwitchCase="'2'" class="col-sm-12" >
+          <app-piechart class="row"></app-piechart>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="example-container col-xs-12 col-lg-5 ">
+  <div
+    #doneList="cdkDropList"
+    (cdkDropListDropped)="drop($event)"
+    [cdkDropListConnectedTo]="[todoList]"
+    [cdkDropListData]="done"
+    cdkDropList
+    class="example-list col-xs-12 col-lg-12">
+    <div *ngFor="let item of done" cdkDrag class="example-box">
+      <header  [style.background-color]="item.primaryColor" >
+        <img class="svg" (click)="openModal(item.id)"  src="https://img.icons8.com/cotton/64/000000/settings--v1.png"/>
+        <img  class="svg" (click)="pin(item.id)" src="https://img.icons8.com/nolan/64/pin3.png"/>
+      </header>
+      <div [ngSwitch]="item.id">
+        <div   *ngSwitchCase="'1'" class="col-sm-12">
+          <app-barchart class="row"></app-barchart>
+        </div>
+        <div   *ngSwitchCase="'2'" class="col-sm-12" >
+          <app-piechart class="row"></app-piechart>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button (click)="save()" >save </button>
+</div>
+
+
+<jw-modal id="1" style=" height: 500px;" >
+  <app-barchart></app-barchart>
+
+</jw-modal>
+<jw-modal id="2"  >
+  <app-piechart></app-piechart>
+</jw-modal>
+<jw-modal id="3" style=" height: 500px;"  >
+  <app-tags></app-tags>
+</jw-modal>

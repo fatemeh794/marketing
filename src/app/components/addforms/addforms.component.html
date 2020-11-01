@@ -1,0 +1,140 @@
+<!----------------------------------------------SHOW SITE FORM-------------------------------------------------------------->
+
+<div class="main" *ngIf="link.url.includes ('/sites') ">
+  <div class="col-sm-12">
+    <label ><h6>WebsiteName:</h6></label>
+    <input type="text" class="form-control"  placeholder="Name" style="width: 500px" [(ngModel)]="siteinformation.WebSiteName"  required>
+  </div>
+  <div class="col-sm-12">
+    <label ><h6>Address:</h6></label>
+    <input type="text" class="form-control"  placeholder="Address" style="width: 500px" [(ngModel)]="siteinformation.Address"  required>
+  </div>
+  <ng-select
+    class="col-sm-12"
+    #MyNgSelect
+    bindLabel="name"
+    bindValue="name"
+    placeholder="Select item"
+    appendTo="body"
+    multiple="true"
+    [items]="tags"
+    [searchable]="true"
+    [clearable]="true"
+    [closeOnSelect]="false"
+    [(ngModel)]="selected"
+
+    >
+  </ng-select>
+  <button (click)="onclose(selected)">add tags</button>
+  <p>
+    Selected city: {{selected | json}}
+  </p>
+  <div>
+    <ng-select class="col-sm-12"
+               [(ngModel)]="siteinformation.PackageId">
+      <ng-option [value]="item.id"  *ngFor="let item of package">
+        {{item.name}}
+      </ng-option>
+    </ng-select>
+    <button *ngIf="addform" class="col-sm-12" type="submit"  (click)="addinformation(siteinformation)" >Add Site </button>
+  </div></div>
+
+<!----------------------------------------------SHOW TAG FORM-------------------------------------------------------------->
+
+<div class="main" *ngIf="link.url.includes ('/tags') ">
+  <div class="col-sm-12">
+    <label ><h6>Tag Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="name" style="width: 500px"  [(ngModel)]="taginformation.name" required>
+  </div>
+  <button  *ngIf="addform" class="col-sm-12" type="submit" value="login" (click)="addinformation(taginformation) " >Add Tag </button>
+</div>
+
+<!-------------------------------------------SHOW PAGE FORM--------------------------------------------------->
+<div class="main " *ngIf="link.url.includes ('/pages') ">
+  <div class="col-sm-12">
+    <label ><h6>Page URL:</h6></label>
+    <input type="text" class="form-control"  placeholder="URL" style="width: 500px" [(ngModel)]="pageinformation.address"  required>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="pageinformation.siteid">
+    <ng-option [value]="item.id"  *ngFor="let item of sites">
+      {{item.address}}
+    </ng-option>
+  </ng-select>
+  <button *ngIf="addform" class="col-sm-12" type="submit"  (click)="addinformation(pageinformation)" >Add Page </button>
+</div>
+<!-------------------------------------------SHOW PACKAGE FORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/packages') ">
+  <div class="col-sm-12">
+    <label ><h6>Package Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="name" style="width: 500px"  [(ngModel)]="packageinformation.name" required>
+  </div>
+  <button *ngIf="addform" class="col-sm-12" type="submit" value="login" (click)="addinformation(packageinformation)" >Add Package </button>
+</div>
+<!-------------------------------------------------USERSFORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/users') ">
+  <div class="col-sm-12">
+    <label ><h6>First name:</h6></label>
+    <input type="text" class="form-control"  placeholder="First name" [(ngModel)]="userinformation.FirstName"  required>
+  </div>
+  <div class="col-sm-12">
+    <label ><h6>Last name:</h6></label>
+    <input type="text" class="form-control"  placeholder="Last name" [(ngModel)]="userinformation.LastName" required>
+
+    <div class="row">
+      <div class="col">
+        <label ><h6>Email:</h6></label>
+        <input type="text" class="form-control"  placeholder="example@mail.com" [(ngModel)]="userinformation.Email" required>
+      </div></div>
+  </div>
+  <div style="margin: 5px">
+    <label ><h6>Profile picture:</h6></label><br>
+    <input  type="file" placeholder="Choose file" (change)="onFileSelected($event)" multiple>
+  </div>
+  <div>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="userinformation.GenderId">
+    <ng-option [value]="item.id"  *ngFor="let item of genders">
+      {{item.name}}
+    </ng-option>
+  </ng-select>
+  <button *ngIf="addform" class="col-sm-12" type="submit"  (click)="addinformation(userinformation)" >Add User </button>
+</div>
+<!-------------------------------------------SHOW PANEL FORM--------------------------------------------------->
+<div class="main " *ngIf="link.url.includes ('/panels') ">
+  <div class="col-sm-12">
+    <label ><h6>Panel:</h6></label>
+    <input  type="text" class="form-control"   placeholder="Description" style="width: 500px" [(ngModel)]="panelinformation.Description"  required>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="panelinformation.OurPageId"
+            >
+    <ng-option [value]="item.id"  *ngFor="let item of pages">
+      {{item.address}}
+    </ng-option>
+  </ng-select>
+  <button  class="col-sm-12" type="submit"  (click)="addinformation(panelinformation)" >Add Panel </button>
+</div>
+<!-------------------------------------------SHOW ADVERTISEMENT FORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/advertisement') ">
+  <div class="col-sm-11">
+    <label><h6>Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="fileName"  [(ngModel)]="data.fileName">
+  </div>
+  <div class="col-sm-11">
+    <label><h6>Link:</h6></label>
+    <input type="text" class="form-control"  placeholder="link" [(ngModel)]="data.link" >
+  </div>
+  <ng-select class="col-sm-11"
+             [(ngModel)]="data.PanelId"
+  >
+    <ng-option [value]="item.id"  *ngFor="let item of panels">
+      {{item.description}}
+    </ng-option>
+  </ng-select>
+  <div class="col-md-3">
+    <input type="file" placeholder="Choose file" (change)="onFileSelected2($event)" multiple>
+  </div>
+  <button class="col-sm-11" type="button" (click)="addinformation(data)" >Upload File</button>
+</div>

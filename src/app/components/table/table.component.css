@@ -1,0 +1,9 @@
+.svg{
+  float: right;
+}
+svg{
+  float: right;
+  cursor: pointer;
+  margin-right: 10px;
+
+}

@@ -1,0 +1,29 @@
+
+.main{
+  width: 80%;
+  height: 80%;
+  margin: auto;
+  padding:20px;
+  text-align: left;
+  margin-top: 50px;
+}
+input{
+  border-radius: 5px;
+  margin:auto;
+  margin-bottom:5px;
+
+}
+button {
+  background-image: linear-gradient( to top , #8f38ea, #b27df1);
+  height: 45px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+label{
+  margin-top: 10px;
+  margin-bottom: 0;
+
+}
+.file{
+  background-color: #b27df1;
+}

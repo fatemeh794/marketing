@@ -1,0 +1,11 @@
+.container{
+  width: 350px;
+  height: 80%;
+  background-color: #fff;
+  border: 3px solid black;
+  border-radius: 20px;
+  float: left;
+  margin: 100px;
+  margin-top: 50px;
+
+}

@@ -1,0 +1,129 @@
+<!----------------------------------------------SHOW SITE FORM-------------------------------------------------------------->
+
+<div class="main" *ngIf="link.url.includes ('/sites') && selectrow">
+  <div class="col-sm-12">
+    <label ><h6>WebsiteName:</h6></label>
+    <input  type="text" class="form-control"  placeholder="Name" style="width: 500px" [(ngModel)]="selectrow.webSiteName"  required>
+  </div>
+  <div class="col-sm-12">
+    <label ><h6>Address:</h6></label>
+    <input type="text" class="form-control"  placeholder="Address" style="width: 500px" [(ngModel)]="selectrow.address"  required>
+  </div>
+  <ng-select
+    #MyNgSelect
+    bindLabel="name"
+    placeholder="Select item"
+    appendTo="body"
+    multiple="true"
+    [searchable]="true"
+    [clearable]="true"
+    [closeOnSelect]="false"
+    [(ngModel)]="selectrow.tagOurSites"
+    (change)="getValues()">
+    <ng-option [value]="item.name"  *ngFor="let item of tags">
+      {{item.name}}
+    </ng-option>
+  </ng-select>
+  <div>
+        <button  class="col-sm-12" type="submit"  (click)="updateinformation(selectrow)" >Upadte Site </button>
+  </div></div>
+
+<!----------------------------------------------SHOW TAG FORM-------------------------------------------------------------->
+
+<div class="main" *ngIf="link.url.includes ('/tags')&& selectrow ">
+  <div class="col-sm-12">
+    <label ><h6>Tag Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="name" style="width: 500px"  [(ngModel)]="selectrow.name" required>
+  </div>
+  <button  class="col-sm-12" type="submit" value="login" (click)="updateinformation(selectrow)" >Update Tag </button>
+</div>
+
+<!-------------------------------------------SHOW PAGE FORM--------------------------------------------------->
+<div class="main " *ngIf="link.url.includes ('/pages')&& selectrow ">
+  <div class="col-sm-12">
+    <label ><h6>Page URL:</h6></label>
+    <input type="text" class="form-control"  placeholder="URL" style="width: 500px" [(ngModel)]="selectrow.address"  required>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="selectrow.ourSiteId">
+    <ng-option [value]="item.id"  *ngFor="let item of sites">
+      {{item.address}}
+    </ng-option>ng serve
+  </ng-select>
+  <button  class="col-sm-12" type="submit"  (click)="updateinformation(selectrow)" >Update Page </button>
+</div>
+<!-------------------------------------------SHOW PACKAGE FORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/packages')&& selectrow ">
+  <div class="col-sm-12">
+    <label ><h6>Package Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="name" style="width: 500px"  [(ngModel)]="selectrow.name" required>
+  </div>
+  <button  class="col-sm-12" type="submit" value="login" (click)="updateinformation(selectrow)" >Update Package </button>
+</div>
+<!-------------------------------------------------USERSFORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/users')&& selectrow ">
+  <div class="col-sm-12">
+    <label ><h6>First name:</h6></label>
+    <input type="text" class="form-control"  placeholder="First name" [(ngModel)]="selectrow.firstName"  required>
+  </div>
+  <div class="col-sm-12">
+    <label ><h6>Last name:</h6></label>
+    <input type="text" class="form-control"  placeholder="Last name" [(ngModel)]="selectrow.lastName" required>
+
+    <div class="row">
+      <div class="col">
+        <label ><h6>Email:</h6></label>
+        <input type="text" class="form-control"  placeholder="example@mail.com" [(ngModel)]="selectrow.email" required>
+      </div></div>
+  </div>
+  <div style="margin: 5px">
+    <label ><h6>Profile picture:</h6></label><br>
+    <input  type="file" placeholder="Choose file" (change)="onFileSelected($event)" multiple>
+  </div>
+  <div>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="selectrow.genderId">
+    <ng-option [value]="item.id"  *ngFor="let item of genders">
+      {{item.name}}
+    </ng-option>
+  </ng-select>
+  <button  class="col-sm-12" type="submit"  (click)="updateinformation(selectrow)" >Update User </button>
+</div>
+<!-------------------------------------------SHOW PANEL FORM--------------------------------------------------->
+<div class="main " *ngIf="link.url.includes ('/panels')&& selectrow ">
+  <div class="col-sm-12">
+    <label ><h6>Panel:</h6></label>
+    <input  type="text" class="form-control"   placeholder="Description" style="width: 500px" [(ngModel)]="selectrow.description"  required>
+  </div>
+  <ng-select class="col-sm-12"
+             [(ngModel)]="selectrow.ourPageId"
+  >
+    <ng-option [value]="item.id"  *ngFor="let item of pages">
+      {{item.address}}
+    </ng-option>
+  </ng-select>
+  <button  class="col-sm-12" type="submit"  (click)="updateinformation(selectrow)" >Update Panel </button>
+</div>
+<!-------------------------------------------SHOW ADVERTISEMENT FORM--------------------------------------------------->
+<div class="main" *ngIf="link.url.includes ('/advertisement') && selectrow ">
+  <div class="col-sm-11">
+    <label><h6>Name:</h6></label>
+    <input type="text" class="form-control"  placeholder="fileName"  [(ngModel)]="selectrow.fileName">
+  </div>
+  <div class="col-sm-11">
+    <label><h6>Link:</h6></label>
+    <input type="text" class="form-control"  placeholder="link" [(ngModel)]="selectrow.link" >
+  </div>
+  <ng-select class="col-sm-11"
+             [(ngModel)]="selectrow.panelId"
+  >
+    <ng-option [value]="item.id"  *ngFor="let item of panels">
+      {{item.description}}
+    </ng-option>
+  </ng-select>
+  <div class="col-md-3">
+    <input type="file" placeholder="Choose file" (change)="onFileSelected2($event)" multiple>
+  </div>
+  <button class="col-sm-11" type="button" (click)="updateinformation(selectrow)" >Upload File</button>
+</div>

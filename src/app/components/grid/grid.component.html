@@ -1,0 +1,119 @@
+<table style="width:100%">
+  <tr>
+    <th></th>
+    <th *ngFor="let column of getColumnFistRow()" [colSpan]="column.colSpan" [rowSpan]="column.rowSpan" style="text-align: center">
+      <div *ngIf="column.name!='checkbox'" class="header">
+        {{column.name}}
+        <div (click)="sort(column)" *ngIf="column.sortable">
+          <img *ngIf="orderBy=='desc'" src="../../assets/icons/sort.png"
+               class="icon" alt="">
+          <img *ngIf="orderBy=='asc'" src="../../assets/icons/sort.png"
+               class="icon" alt="">
+        </div>
+      </div>
+      <div *ngIf="column.headerName=='checkbox'" class="header">
+        <input type="checkbox" (change)="checkOrUncheck($event)" [checked]="checkAll">
+      </div>
+    </th>
+  </tr>
+  <tr>
+    <th></th>
+    <th *ngFor="let column of getColumnSecondRow()" style="text-align: center">
+      <div *ngIf="column.headerName!='checkbox'" class="header">
+        {{column.headerName}}
+        <div (click)="sort(column)" *ngIf="column.sortable">
+          <img *ngIf="orderBy=='desc'" src="../../assets/icons/sort.png"
+               class="icon" alt="">
+          <img *ngIf="orderBy=='asc'" src="../../assets/icons/sort.png"
+               class="icon" alt="">
+        </div>
+      </div>
+      <div *ngIf="column.headerName=='checkbox'" class="header">
+        <input type="checkbox" (change)="checkOrUncheck($event)" [checked]="checkAll">
+      </div>
+    </th>
+  </tr>
+  <tr>
+    <th *ngFor="let column of gridOptions.ColumnDefinitions">
+      <div *ngIf="filterable" class="row" style="background: #efefef">
+        <div *ngIf="column.headerName!='checkbox'">
+          <input type="text" [(ngModel)]="filter[column.field]">
+          <button type="button" style="padding: 0;margin: 0 ;border-width: 0;" (click)="filtering()">
+            <img src="../../assets/icons/filter.png" class="icon" alt="">
+          </button>
+        </div>
+      </div>
+    </th>
+  </tr>
+  <tr *ngFor="let row of gridData;let i=index">
+    <td *ngFor="let column of gridOptions.ColumnDefinitions">
+      <div *ngIf="column.headerName!='checkbox'" class="row"
+           [ngStyle]="{'background':this.gridOptions.alternateColor && i%2==0?this.gridOptions.alternateColor.color:'#FFF'}">
+        <div [ngSwitch]="column.type.component">
+          <div *ngSwitchCase="ComponentType.Toggle">
+            <mat-slide-toggle [checked]="row[column.field]" onclick="return false;"></mat-slide-toggle>
+          </div>
+          <div *ngSwitchCase="ComponentType.Text">
+            <div
+              *ngIf="column.type.dataType == DataType.Numeric || column.type.dataType ==DataType.Text">{{row[column.field]}}</div>
+            <div *ngIf="column.type.dataType == DataType.DateTime">
+              {{row[column.field]| date: column.type.formatting.toString()}}
+            </div>
+          </div>
+          <div *ngSwitchCase="ComponentType.Checkbox">
+            <input type="checkbox" [checked]="row[column.field]" onclick="return false;">
+          </div>
+          <div *ngSwitchCase="ComponentType.Image">
+            <img *ngIf="column.type.dataType==DataType.Image" class="rounded-circle"
+                 src="{{'data:image/jpg;base64,' + row[column.field]}}" style="width: 60px;height: 60px" alt="">
+            <img *ngIf="column.type.dataType==DataType.ImageLink" class="rounded-circle" src="{{row[column.field]}}"
+                 style="width:60px;height:60px" alt="">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="column.headerName=='checkbox'" class="row"
+           [ngStyle]="{'background':this.gridOptions.alternateColor && i%2==0?this.gridOptions.alternateColor.color:'#FFF'}">
+        <input type="checkbox" (change)="changeSelection($event,row)" [checked]="checkAll">
+      </div>
+      <!--      {{row[column.field]}}-->
+    </td>
+  </tr>
+  <tr>
+    <td *ngFor="let column of gridOptions.ColumnDefinitions">
+      <div [ngSwitch]="column.aggregationFunction" *ngIf="column.type.dataType == DataType.Numeric">
+        <div *ngSwitchCase=AggregationFunction.Sum>
+          <img src="../../assets/icons/sum.png" class="icon" alt=""/>
+          {{calcSum(column.field)}}
+        </div>
+        <div *ngSwitchCase=AggregationFunction.Average>
+          <b>Average : </b> {{calcAvg(column.field)}}
+        </div>
+        <div *ngSwitchCase=AggregationFunction.Max>
+          <b>Max : </b>{{calcMax(column.field)}}
+        </div>
+        <div *ngSwitchCase=AggregationFunction.Min>
+          <b>Min : </b>{{calcMin(column.field)}}
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
+<div class="footer">
+  <div *ngIf="paging" class="pagingTotalRows">
+    <label>Showing {{(currentPageNumber) * paging.recordsOfPage + 1}}
+      to {{(currentPageNumber + 1) * paging.recordsOfPage > totalRow ? totalRow : (currentPageNumber + 1) * paging.recordsOfPage}}
+      of {{totalRow}} entries</label>
+  </div>
+  <div *ngIf="paging" class="pagingContainer">
+    <nav aria-label="Page navigation">
+      <ul class="pagination pagination-rounded">
+        <div *ngFor="let page of pages;let i = index">
+          <li class="paginate_button page-item" [ngClass]="{'active':i ===currentPageNumber }"
+              (click)="getPage(page,i)">
+            <a class="page-link" href="#">{{i + 1}}</a>
+          </li>
+        </div>
+      </ul>
+    </nav>
+  </div>
+</div>

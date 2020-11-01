@@ -1,0 +1,10 @@
+
+.container-fluid {
+  background-image: linear-gradient(to bottom, rgba(232, 232, 232, 0.58), #b1b1b1);
+
+}
+.col-md-2 , .col-md-10{
+  padding: 0;
+}
+
+

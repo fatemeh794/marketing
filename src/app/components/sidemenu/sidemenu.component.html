@@ -1,0 +1,22 @@
+
+<div class=" sidenav "  >
+  <a>About</a>
+  <a >users</a>
+  <button class="dropdown-btn" (click)="toggle()">Dropdown
+
+      <div *ngIf="show" [hidden]="!show" class="col">
+      <a [routerLink]="'dragdrop'" routerLinkActive="active">drag&drop</a>
+      <a [routerLink]="'sites'" routerLinkActive="active">sites</a>
+      <a [routerLink]="'tags'" routerLinkActive="active">tags</a>
+      <a [routerLink]="'packages'" routerLinkActive="active">packages</a>
+      <a [routerLink]="'pages'" routerLinkActive="active">pages</a>
+      <a [routerLink]="'users'" routerLinkActive="active">users</a>
+      <a [routerLink]="'panels'" routerLinkActive="active">panels</a>
+      <a [routerLink]="'advertisement'" routerLinkActive="active">advertisement</a>
+    </div>
+  </button>
+
+</div>
+
+
+

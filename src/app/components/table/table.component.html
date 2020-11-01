@@ -1,0 +1,47 @@
+<svg  (click)="openModal( 'modal' )" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+     width="30" height="30"
+     viewBox="0 0 172 172"
+     style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#9404a5"><path d="M35.83333,21.5c-7.91917,0 -14.33333,6.41417 -14.33333,14.33333v100.33333c0,7.91917 6.41417,14.33333 14.33333,14.33333h64.5v-14.33333h-64.5v-71.66667h100.33333v35.83333h14.33333v-64.5c0,-7.91917 -6.41417,-14.33333 -14.33333,-14.33333zM35.83333,35.83333h100.33333v14.33333h-100.33333zM50.16667,78.83333v14.33333h14.33333v-14.33333zM78.83333,78.83333v14.33333h43v-14.33333zM50.16667,107.5v14.33333h14.33333v-14.33333zM78.83333,107.5v14.33333h43v-14.33333zM136.16667,114.66667v21.5h-21.5v14.33333h21.5v21.5h14.33333v-21.5h21.5v-14.33333h-21.5v-21.5z"></path></g></g></svg>
+<svg  xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+             width="30" height="30"
+             viewBox="0 0 172 172"
+             style=" fill:#000000;" (click)="openModal( 'modal1')"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#66098d"><path d="M130.88125,17.2c-2.93403,0 -5.86843,1.12051 -8.10729,3.35938l-13.84062,13.84063l28.66667,28.66667l13.84062,-13.84063c4.47773,-4.47773 4.47773,-11.73685 0,-16.21458l-12.45208,-12.45208c-2.23887,-2.23887 -5.17326,-3.35937 -8.10729,-3.35937zM97.46667,45.86667l-67.31068,67.31067c0,0 5.26186,-0.47147 7.22266,1.48933c1.9608,1.9608 0.34669,14.792 2.75469,17.2c2.408,2.408 15.15831,0.71299 16.98724,2.54192c1.82894,1.82893 1.70209,7.43542 1.70209,7.43542l67.31067,-67.31067zM22.93333,131.86667l-5.40859,15.31875c-0.21262,0.60453 -0.32239,1.24042 -0.32474,1.88125c0,3.16643 2.5669,5.73333 5.73333,5.73333c0.64083,-0.00235 1.27672,-0.11212 1.88125,-0.32474c0.0187,-0.00737 0.03737,-0.01483 0.05599,-0.02239l0.14557,-0.04479c0.01122,-0.00743 0.02242,-0.01489 0.03359,-0.0224l15.08359,-5.31901l-8.6,-8.6z"></path></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+             width="30" height="30"
+             viewBox="0 0 172 172"
+             style=" fill:#000000;" (click)="deleteRowData(selectedrows)"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#601280"><path d="M74.53333,17.2c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-34.32161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-34.32161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146zM34.4,45.86667v91.73333c0,6.33533 5.13133,11.46667 11.46667,11.46667h80.26667c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333z"></path></g></g></svg>
+
+
+
+<jw-modal id="modal"  >
+  <div >
+    <svg (click)="closeModal('modal')" class="svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                width="24" height="24"
+                                                viewBox="0 0 172 172"
+                                                style=" fill:#f5f5f5;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#753792"><path d="M130.79167,21.5h-89.58333c-10.86825,0 -19.70833,8.84008 -19.70833,19.70833v89.58333c0,10.86825 8.84008,19.70833 19.70833,19.70833h89.58333c10.86825,0 19.70833,-8.84008 19.70833,-19.70833v-89.58333c0,-10.86825 -8.84008,-19.70833 -19.70833,-19.70833zM113.09358,105.48975c2.09983,2.09625 2.09983,5.504 0,7.60025c-1.04992,1.0535 -2.42592,1.57667 -3.80192,1.57667c-1.376,0 -2.752,-0.52317 -3.80192,-1.57308l-19.48975,-19.49333l-19.48975,19.48975c-1.04992,1.0535 -2.42592,1.57667 -3.80192,1.57667c-1.376,0 -2.752,-0.52317 -3.80192,-1.57308c-2.09983,-2.09625 -2.09983,-5.504 0,-7.60025l19.49333,-19.49333l-19.48975,-19.48975c-2.09983,-2.09625 -2.09983,-5.504 0,-7.60025c2.09983,-2.09983 5.50042,-2.09983 7.60025,0l19.48975,19.48975l19.48975,-19.48975c2.09983,-2.09983 5.50042,-2.09983 7.60025,0c2.09983,2.09625 2.09983,5.504 0,7.60025l-19.48975,19.48975z"></path></g></g></svg>
+  </div>
+    <app-addforms (addinfo)="addRowData($event)" addform="true"
+    ></app-addforms>
+
+</jw-modal>
+<jw-modal id="modal1"  >
+  <div >
+    <svg (click)="closeModal('modal1')" class="svg" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+         width="24" height="24"
+         viewBox="0 0 172 172"
+         style=" fill:#f5f5f5;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#753792"><path d="M130.79167,21.5h-89.58333c-10.86825,0 -19.70833,8.84008 -19.70833,19.70833v89.58333c0,10.86825 8.84008,19.70833 19.70833,19.70833h89.58333c10.86825,0 19.70833,-8.84008 19.70833,-19.70833v-89.58333c0,-10.86825 -8.84008,-19.70833 -19.70833,-19.70833zM113.09358,105.48975c2.09983,2.09625 2.09983,5.504 0,7.60025c-1.04992,1.0535 -2.42592,1.57667 -3.80192,1.57667c-1.376,0 -2.752,-0.52317 -3.80192,-1.57308l-19.48975,-19.49333l-19.48975,19.48975c-1.04992,1.0535 -2.42592,1.57667 -3.80192,1.57667c-1.376,0 -2.752,-0.52317 -3.80192,-1.57308c-2.09983,-2.09625 -2.09983,-5.504 0,-7.60025l19.49333,-19.49333l-19.48975,-19.48975c-2.09983,-2.09625 -2.09983,-5.504 0,-7.60025c2.09983,-2.09983 5.50042,-2.09983 7.60025,0l19.48975,19.48975l19.48975,-19.48975c2.09983,-2.09983 5.50042,-2.09983 7.60025,0c2.09983,2.09625 2.09983,5.504 0,7.60025l-19.48975,19.48975z"></path></g></g></svg>
+  </div>
+  <app-updateform  (editsiteinfo)="updateRowData($event)" updateform="true" [selectrow]="currentrows"
+  ></app-updateform>
+
+</jw-modal>
+
+<app-grid [gridData]=this.data
+          [gridOptions]=this.gridOptions
+          (deletedata)="selectedrows = $event"
+          (updatedata)="currentrows = $event"
+></app-grid>
+
+
+
+
